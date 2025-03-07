@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="info-section">
+    <h1>Atualize seu cadastro!</h1>
+    <p>
+      Sempre mantenha seus dados atualizados.<br />
+      Quando seus dados estão atualizados, aumentam as chances de entrarmos em contato com você!
+    </p>
+  </div>
+
+  <p-divider layout="vertical"></p-divider>
+
+  <div class="form-section">
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="grid">
+
+      <div class="col-12 spacing">
+        <label style="display: block;">Username do GitHub:</label>
+        <input pInputText class="formInput" formControlName="githubUsername" />
+      </div>
+
+      <div class="col-12">
+        <button class="buttons" (click)="loadGithubData()" [disabled]="!f['githubUsername'].value">
+          Cadastrar com Github | &nbsp;
+          <i class="pi pi-github"></i>
+        </button>
+      </div>
+  
+      <div class="col-12">  
+        &nbsp;
+        <p-divider [style]="{ width: '250px' }"/>
+        &nbsp;
+      </div>
+  
+      <div class="col-12 spacing">
+        <label style="display: block;">Nome:</label>
+        <input class="formInput" formControlName="name" />
+  
+        <p 
+          class="errorShow" 
+          *ngIf="submitted && getFirstError('name', 'nome')"
+        > 
+          {{ getFirstError('name', 'nome') }} 
+        </p>
+      </div>
+  
+      <div class="col-12 spacing">
+        <label style="display: block;">E-mail:</label>
+        <input class="formInput" formControlName="email" type="email" />
+              
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('email', 'email') && submitted"
+        > 
+          {{ getFirstError('email', 'email') }} 
+        </p>
+      </div>
+  
+      <div class="col-12 spacing">
+        <label style="display: block;">Celular:</label>
+        <input class="formInput" formControlName="cellnumber" />
+                    
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('cellnumber', 'celular') && submitted"
+        > 
+          {{ getFirstError('cellnumber', 'celular') }} 
+        </p>
+      </div>
+  
+      <div class="col-12 spacing">
+        <label style="display: block;">Cidade:</label>
+        <input class="formInput" formControlName="city" />
+                    
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('city', 'cidade') && submitted"
+        > 
+          {{ getFirstError('city', 'cidade') }} 
+        </p>
+      </div>
+  
+      <div class="col-12 spacing">
+        <label style="display: block;">Formação Acadêmica:</label>
+        <input class="formInput" formControlName="academicFormation" />
+                    
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('academicFormation', 'sua formação') && submitted"
+        > 
+          {{ getFirstError('academicFormation', 'sua formação') }} 
+        </p>
+      </div>
+  
+      <div class="col-12 spacing">
+        <label style="display: block;">Linguagens (separadas por vírgula):</label>
+        <input class="formInput" formControlName="skills"/>
+                    
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('skills', 'linguagens') && submitted"
+        > 
+          {{ getFirstError('skills', 'linguagens') }} 
+        </p>
+      </div>
+      <div class="col-12">
+        <button class="buttons" type="submit" >Salvar</button>
+      </div>
+    </form>
+  </div>
+
+</div>

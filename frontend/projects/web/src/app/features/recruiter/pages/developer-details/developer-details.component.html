@@ -1,0 +1,56 @@
+<h2>{{ developer?.name }}</h2>
+<p><strong>Email:</strong> {{ developer?.email }}</p>
+<p><strong>Celular:</strong> {{ developer?.cellnumber }}</p>
+<p><strong>Cidade:</strong> {{ developer?.city }}</p>
+<p><strong>Formação:</strong> {{ developer?.academicFormation }}</p>
+<p><strong>Linguagens:</strong> {{ getSkillsAsString(developer.skills) }}</p>
+&nbsp;
+<p-divider [style]="{ width: '100%' }"/>
+&nbsp;
+<h3>Fazer Feedback</h3>
+
+<form [formGroup]="form" (ngSubmit)="submitFeedback()">
+  <div class="grid">
+    <div class="col-3">
+        <label>Seu nome:</label>
+        <input class="block formInput" formControlName="recruiterName" >
+
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('recruiterName', 'nome') && submitted"
+        > 
+          {{ getFirstError('recruiterName', 'nome') }} 
+        </p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-3">
+        <label>Feedback:</label>
+        <textarea class="block formInput" style="width: 700px;" rows="5" formControlName="comment" placeholder="Deixe seu feedback"></textarea>
+        <p 
+          class="errorShow" 
+          *ngIf="getFirstError('comment', 'comentário') && submitted"
+        > 
+          {{ getFirstError('comment', 'comentário') }} 
+        </p>
+    </div>
+  </div>
+  <button type="submit">Enviar Feedback</button>
+</form>
+&nbsp;
+<p-divider [style]="{ width: '100%' }"/>
+&nbsp;
+<h3> Lista de feedbacks</h3>
+&nbsp;
+<ul *ngIf="developer?.feedbacks?.length; else noFeedbacks">
+  <li *ngFor="let feedback of developer.feedbacks">
+    <label>Autor: {{ feedback.recruiterName }}</label>
+    <p>{{ feedback.comment }}</p>
+    &nbsp;
+  </li>
+</ul>
+<ng-template #noFeedbacks>
+  <p>Nenhum feedback cadastrado.</p>
+</ng-template>
+

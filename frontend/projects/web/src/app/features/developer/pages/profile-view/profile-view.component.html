@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="info-section">
+      <h1>Cadastro realizado!</h1>
+      <p>
+        Cadastro realizado com sucesso, agora só aguardar.<br />
+        Agora só esperar, assim que surgir uma oportunidade que combine com suas habilidades entraremos em contato.<br />
+        Ao lado está como os seus dados foram salvos.
+      </p>
+    </div>
+  
+    <p-divider layout="vertical"></p-divider>
+  
+    <div class="form-section">
+  
+      <div class="grid">
+    
+        <div class="col-12 spacing">
+          <label style="display: block;">Nome:</label>
+          <input class="formInput" disabled [(ngModel)]="developer.name" />
+        </div>
+    
+        <div class="col-12 spacing">
+          <label style="display: block;">E-mail:</label>
+          <input class="formInput" disabled [(ngModel)]="developer.email" type="email" />
+        
+        </div>
+    
+        <div class="col-12 spacing">
+          <label style="display: block;">Celular:</label>
+          <input class="formInput" disabled [(ngModel)]="developer.cellnumber" />
+                
+        </div>
+    
+        <div class="col-12 spacing">
+          <label style="display: block;">Cidade:</label>
+          <input class="formInput" disabled [(ngModel)]="developer.city" />
+                
+        </div>
+    
+        <div class="col-12 spacing">
+          <label style="display: block;">Formação Acadêmica:</label>
+          <input class="formInput" disabled [(ngModel)]="developer.academicFormation" />
+                
+        </div>
+    
+        <div class="col-12 spacing">
+          <label style="display: block;">Linguagens (separadas por vírgula):</label>
+          <input class="formInput" disabled [(ngModel)]="developer.skills"/>
+                
+        </div>
+        
+        <div class="col-12">
+          <button class="buttons" type="submit" (click)="editDeveloper()">Alterar cadastro</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>

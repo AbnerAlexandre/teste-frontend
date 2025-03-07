@@ -1,0 +1,98 @@
+@import "primeicons/primeicons.css";
+* {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    background-color: #f3f5f5;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.spacing {
+    margin-bottom: 5px;
+}
+
+.formInput {
+    padding: 3px;
+    border-radius: 4px;
+    border: 1px solid #a2a6ad;
+    width: 250px;
+    font-size: 15px;
+}
+
+.buttons {
+    border-radius: 4px;
+    font-size: 17px;
+    background-color: #f7f7f7;
+    padding: 3px 5px;
+    color: #020a23;
+    border: 1px solid #020a23;
+    transition: all 0.3s;
+}
+
+.buttons-width {
+    width: 237px;
+}
+
+.buttons:hover {
+    background-color: #020a23;
+    color: #f7f7f7;
+    border: 1px solid #f7f7f7;
+}
+
+.errorShow {
+    color: red;
+    font-size: 12px;
+    margin-block: 2px;
+}
+
+.container {
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 8px;
+}
+
+.form-section {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.info-section {
+    flex: 1;
+    text-align: center;
+}
+
+.info-section h1 {
+    font-size: 32px;
+    color: #020a23;
+    margin-bottom: 16px;
+}
+
+.info-section p {
+    font-size: 18px;
+    color: #4a4a4a;
+    line-height: 1.5;
+}
+
+p-divider[layout="vertical"] {
+    height: 550px;
+}
+
+.block {
+    display: block;
+    width: 100%;
+}

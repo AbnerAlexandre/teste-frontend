@@ -1,0 +1,86 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="align-items-center mb-4">
+    <div class="grid">
+        <div class="col-3">
+            <label>Nome</label>
+            <input class="block formInput" formControlName="name" >
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <label>Cidade</label>
+            <input class="block formInput" formControlName="city"  />
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <label>E-mail</label>
+            <input class="block formInput" formControlName="email" />
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <label>Linguagens</label>
+            <input class="block formInput" formControlName="skills" />
+        </div>
+    </div>
+    <div class="grid">
+        <div class="field col-3 flex" style="justify-content: space-around;">
+          <button pButton type="submit" label="Buscar"></button>
+          <button pButton type="button" label="Limpar" class="button-secondary ml-2" (click)="resetFilters()"></button>
+        </div>
+    </div>
+  </form>
+  
+  <p-progressSpinner *ngIf="isLoading" styleClass="flex justify-content-center mt-5"></p-progressSpinner>
+  <p-divider [style]="{ width: '100%' }"/>
+  <div class="grid mt-4" *ngIf="!isLoading && developers.length">
+    <div class="col-12 sm:col-6 md:col-4 lg:col-3" *ngFor="let dev of developers">
+      <p-card class="shadow-3">
+        <ng-template pTemplate="header">
+          <div class="flex ml-3" style="justify-content: space-between; align-items: center;">
+            
+            <span class="font-bold mr-3 mt-3">{{ dev.name }}</span>
+            <img 
+              [src]="dev.avatarUrl ?? 'https://avatars.githubusercontent.com/u/201858833?v=4'"
+              alt="Avatar"
+              class="mr-3 mt-3"
+              style="border-radius: 50%; width: 50px; height: 50px;" />
+          </div>
+        </ng-template>
+  
+        <div class="mb-2"><strong>Usuário GitHub:</strong> {{ dev.githubUsername }}</div>
+        <div class="mb-2"><strong>Email:</strong> {{ dev.email }}</div>
+        <div class="mb-2"><strong>Cidade:</strong> {{ dev.city }}</div>
+        <div class="mb-2"><strong>Linguagens:</strong> {{ getSkillsAsString(dev.skills) }}</div>
+  
+        <div class="flex justify-content-between mt-3">
+            <a  *ngIf="dev.githubUsername"
+                pButton
+                [attr.href]="'https://github.com/' + dev.githubUsername"
+                target="_blank"
+                rel="noopener noreferrer"
+                icon="pi pi-github"
+                class="buttons"
+            ></a>
+          
+
+            <button pButton type="button" class="buttons"
+                [routerLink]="['/recruiter/details', dev._id]">
+                Detalhes| &nbsp;
+                <i class="pi pi-eye"></i>
+            </button>
+
+            <button pButton type="button" class="buttons"
+                (click)="deleteDeveloper(dev._id!)">
+                Excluir| &nbsp;
+                <i class="pi pi-trash"></i>
+            </button>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  
+
+<p *ngIf="!isLoading && !developers.length" class="p-text-center p-mt-5">
+  Nenhum developer encontrado.
+</p>
